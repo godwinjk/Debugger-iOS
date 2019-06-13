@@ -77,6 +77,8 @@ Thank you
 
 [SwiftSQLite](https://github.com/chrismsimpson/SwiftSQLite)
 
-# Contact
+# Copyright
+Do whatever you want. For an extra assurance I have added MIT Licence.
 
+# Contact
 Contact me via godwinjoseph.k@gmail.com or www.linkedin.com/in/godwin-joseph, if you have any questions or improvements.
