@@ -2,6 +2,8 @@
 
 Database Debugger is a handy tool for iOS applications. When enabled, developers have access to database of application in realtime. No need of exporting the database.
 
+# Caution
+This project is very unstable and not handled large data and security. That is on the way. Consider it as sample or tutorial.
 # Set-up
 
 ### In Mac
@@ -67,4 +69,14 @@ Sample Images
 
 ![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-13%20at%204.13.00%20PM.png)
 
+Thank you
 
+[SQLite](https://www.sqlite.org/index.html)
+
+[Peertalk](https://github.com/rsms/peertalk)
+
+[SwiftSQLite](https://github.com/chrismsimpson/SwiftSQLite)
+
+# Contact
+
+Contact me via godwinjoseph.k@gmail.com or www.linkedin.com/in/godwin-joseph, if you have any questions or improvements.
