@@ -63,13 +63,13 @@ In this case you have to add some Bridging-header files to interoperability of s
 @end
 ```
 
-Sample Images
+## Sample Images
 
 ![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-13%20at%204.12.19%20PM.png)
 
 ![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-13%20at%204.13.00%20PM.png)
 
-Thank you
+## Thank you
 
 [SQLite](https://www.sqlite.org/index.html)
 
@@ -77,8 +77,8 @@ Thank you
 
 [SwiftSQLite](https://github.com/chrismsimpson/SwiftSQLite)
 
-# Copyright
+## Copyright
 Do whatever you want. For an extra assurance I have added MIT Licence.
 
-# Contact
+## Contact
 Contact me via godwinjoseph.k@gmail.com or www.linkedin.com/in/godwin-joseph, if you have any questions or improvements.
