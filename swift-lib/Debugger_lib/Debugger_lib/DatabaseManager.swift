@@ -20,7 +20,7 @@ class DatabaseManager{
 
         let databases = getDatabases()
         var dictionary : [String: Any] = [:]
-        dictionary["rc"] = 1000
+        dictionary["rc"] = Constants.KEY_DB_LIST
         var dbs: [String] = []
         for db in databases! {
             dbs.append(db.path)
@@ -42,7 +42,7 @@ class DatabaseManager{
         }
 
         var root : [String: Any] = [:]
-        root["rc"] = 1001
+        root["rc"] = Constants.KEY_TABLES
         var tables: [String] = []
         while (statement.step() == .row){
             for i in 0..<statement.columnCount(){
@@ -66,7 +66,7 @@ class DatabaseManager{
         }
 
         var root : [String: Any] = [:]
-        root["rc"] = 1002
+        root["rc"] = Constants.KEY_TABLE_DETAILS
         var coulumnNames : [String] = []
         let columnCount = statement.columnCount()
         for i in 0..<columnCount{
@@ -98,7 +98,50 @@ class DatabaseManager{
         return String(data: finalObj, encoding: .utf8)
     }
 
-    public func getDatabases() -> [URL]?{
+    public func getResults( databaseName : String , query : String)  throws -> String?{
+        let database = SQLiteDatabase()
+        _ = database.open(filename: databaseName)
+        let statement = SQLiteStatement(database: database)
+        if statement.prepare(sqlQuery: query) != .ok {
+            /* handle error */
+            print("Error")
+        }
+
+        var root : [String: Any] = [:]
+        root["rc"] = Constants.KEY_QUERY
+        var coulumnNames : [String] = []
+        let columnCount = statement.columnCount()
+        for i in 0..<columnCount{
+            coulumnNames.append(statement.columnName(at: i) ?? "")
+        }
+
+        var rows: [[String]] = []
+        var rowIndex = 0
+        while (statement.step() == .row){
+            var row = [String]()
+
+            for j in 0..<columnCount{
+                row.append(statement.string(at: j) ?? "")
+            }
+            rows.append(row)
+            rowIndex += 1
+        }
+
+        statement.finalizeStatement()
+        var data : [String: Any] = [:]
+        data["columnCount"] = columnCount
+        data["rowCount"] = rowIndex
+        data["names"] = coulumnNames
+        data["details"] = rows
+
+        root["Data"] = data
+
+        let finalObj =  try JSONSerialization.data(withJSONObject: root, options: [])
+        return String(data: finalObj, encoding: .utf8)
+    }
+
+    //  MARK: private funcs
+    private func getDatabases() -> [URL]?{
         let urls = getAllFiles(directory: nil)
         let databaseDirectory = filter(urls: urls)
         let dbArrays = getAllFiles(directory: databaseDirectory)

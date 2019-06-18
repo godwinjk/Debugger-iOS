@@ -23,6 +23,8 @@
 		4535AC0522B236C300754C12 /* SQLiteStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535ABF222B236C300754C12 /* SQLiteStatement.swift */; };
 		4535AC0622B236C300754C12 /* SQLiteStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535ABF322B236C300754C12 /* SQLiteStatusCode.swift */; };
 		4535AC0D22B2524700754C12 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535AC0C22B2524700754C12 /* CommunicationManager.swift */; };
+		45CE2B0622B7A33E0059005D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B0522B7A33E0059005D /* Constants.swift */; };
+		45CE2B0822B7A8DD0059005D /* DebuggerIos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B0722B7A8DD0059005D /* DebuggerIos.swift */; };
 		45E98DC222B2548E004D6D3D /* Debugger_lib.h in Headers */ = {isa = PBXBuildFile; fileRef = 4535AB7922B2282C00754C12 /* Debugger_lib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		4535ABF222B236C300754C12 /* SQLiteStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteStatement.swift; sourceTree = "<group>"; };
 		4535ABF322B236C300754C12 /* SQLiteStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteStatusCode.swift; sourceTree = "<group>"; };
 		4535AC0C22B2524700754C12 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		45CE2B0522B7A33E0059005D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		45CE2B0722B7A8DD0059005D /* DebuggerIos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebuggerIos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				4535ABD422B2315F00754C12 /* Debugger_lib-Bridging-Header.h */,
 				4535AB7922B2282C00754C12 /* Debugger_lib.h */,
 				4535AB7A22B2282C00754C12 /* Info.plist */,
+				45CE2B0522B7A33E0059005D /* Constants.swift */,
+				45CE2B0722B7A8DD0059005D /* DebuggerIos.swift */,
 			);
 			path = Debugger_lib;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4535AC0D22B2524700754C12 /* CommunicationManager.swift in Sources */,
+				45CE2B0622B7A33E0059005D /* Constants.swift in Sources */,
+				45CE2B0822B7A8DD0059005D /* DebuggerIos.swift in Sources */,
 				4535ABF922B236C300754C12 /* PTChannel.m in Sources */,
 				4535AC0122B236C300754C12 /* DatabaseManager.swift in Sources */,
 				4535ABFF22B236C300754C12 /* PTUSBHub.m in Sources */,

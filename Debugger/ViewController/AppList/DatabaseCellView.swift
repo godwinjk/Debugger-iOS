@@ -9,9 +9,15 @@
 import Cocoa
 
 class DatabaseCellView: NSTableCellView {
-    @IBOutlet weak var lblDatabaseName: NSTextField!
-    @IBOutlet weak var ivIcon: NSImageView!
-    
+
+    @IBOutlet weak var iConView: NSImageView!
+    @IBOutlet weak var appNameView: NSTextField!
+    @IBOutlet weak var appBundleId: NSTextField!
+
+    var object : Any?
+    var index: Int?
+
+    var clickDelegate : ClickDelegate?
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -22,5 +28,7 @@ class DatabaseCellView: NSTableCellView {
     }
     
     @IBAction func onClick(_ sender: Any) {
+        clickDelegate?.onClick(obj: object, index: index!)
     }
+
 }

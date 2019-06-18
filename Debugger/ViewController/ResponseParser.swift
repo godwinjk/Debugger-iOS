@@ -17,7 +17,27 @@ class ResponseParser: NSObject {
         }
         return 0
     }
-    
+
+    public func parseAppDetails(data : String) -> DApplication{
+        var application = DApplication()
+
+        let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
+        if let dictionary = json as? [String: Any] {
+            let appName = dictionary["appName"] as? String
+            let bundleId = dictionary["id"] as? String
+            let icon = dictionary["icon"] as? String
+            let build = dictionary["build"] as? String
+            let version = dictionary["version"] as? String
+
+            application.applicationName = appName ?? "Dummy Name"
+            application.applicationId = bundleId  ?? "com.godwin.bundle"
+            application.iconString = icon
+            application.build = build  ?? "0"
+            application.version = version ?? "0.0.0"
+        }
+
+        return application
+    }
     public func parseDatabases(data : String) -> [DDatabase]?{
         var dbs = [DDatabase]()
 

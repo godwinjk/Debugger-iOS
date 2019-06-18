@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45080CE622AF7D2A008E4A99 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45080CE522AF7D2A008E4A99 /* CommunicationManager.swift */; };
-		45080CE822AF7D40008E4A99 /* CommunicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45080CE722AF7D40008E4A99 /* CommunicationDelegate.swift */; };
 		45080CEB22AF8AF3008E4A99 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45080CEA22AF8AF3008E4A99 /* ResponseParser.swift */; };
 		45080CEE22AFAC4F008E4A99 /* ClickDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45080CED22AFAC4F008E4A99 /* ClickDelegate.swift */; };
 		450937CF2271E53A00C008C9 /* DatabaseOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450937CE2271E53A00C008C9 /* DatabaseOutlineView.swift */; };
@@ -16,7 +14,7 @@
 		452921852271AA3500DDB6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452921842271AA3500DDB6B9 /* AppDelegate.swift */; };
 		452921892271AA3700DDB6B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452921882271AA3700DDB6B9 /* Assets.xcassets */; };
 		4529218C2271AA3700DDB6B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4529218A2271AA3700DDB6B9 /* Main.storyboard */; };
-		452921962271AFF500DDB6B9 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452921952271AFF500DDB6B9 /* MainVC.swift */; };
+		452921962271AFF500DDB6B9 /* DatabaseWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452921952271AFF500DDB6B9 /* DatabaseWC.swift */; };
 		452A1798228A6FFB0080D947 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 452A1791228A6FFB0080D947 /* PTChannel.m */; };
 		452A1799228A6FFB0080D947 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 452A1794228A6FFB0080D947 /* PTProtocol.m */; };
 		452A179A228A6FFB0080D947 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 452A1796228A6FFB0080D947 /* PTUSBHub.m */; };
@@ -27,12 +25,19 @@
 		45C13CB22271BC3300013FC2 /* DummyDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C13CB12271BC3300013FC2 /* DummyDataCreator.swift */; };
 		45C13CB72271C6C300013FC2 /* DatabaseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C13CB62271C6C300013FC2 /* DatabaseCellView.swift */; };
 		45C13CB92271C6D400013FC2 /* DatabaseCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C13CB82271C6D400013FC2 /* DatabaseCellView.xib */; };
+		45CE2B0A22B7AE210059005D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B0922B7AE210059005D /* Constants.swift */; };
+		45CE2B0C22B7B1400059005D /* AppListWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B0B22B7B1400059005D /* AppListWC.swift */; };
+		45CE2B0E22B7B1570059005D /* BaseWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B0D22B7B1570059005D /* BaseWC.swift */; };
+		45CE2B1222B7B3AF0059005D /* AppListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B1122B7B3AF0059005D /* AppListView.swift */; };
+		45CE2B1522B7C8540059005D /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B1422B7C8540059005D /* CommunicationManager.swift */; };
+		45CE2B1722B7CA6C0059005D /* CallbackSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B1622B7CA6C0059005D /* CallbackSubscriber.swift */; };
+		45CE2B1922B7CAFA0059005D /* CommunicationListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B1822B7CAFA0059005D /* CommunicationListener.swift */; };
+		45CE2B1B22B7CB700059005D /* DDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B1A22B7CB700059005D /* DDevice.swift */; };
+		45CE2B1D22B8B2AD0059005D /* AppCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE2B1C22B8B2AD0059005D /* AppCellView.swift */; };
 		45EBA13622AE4DEE005C71F4 /* PTDataExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EBA13522AE4DEE005C71F4 /* PTDataExtn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45080CE522AF7D2A008E4A99 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
-		45080CE722AF7D40008E4A99 /* CommunicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationDelegate.swift; sourceTree = "<group>"; };
 		45080CEA22AF8AF3008E4A99 /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		45080CED22AFAC4F008E4A99 /* ClickDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickDelegate.swift; sourceTree = "<group>"; };
 		450937CE2271E53A00C008C9 /* DatabaseOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOutlineView.swift; sourceTree = "<group>"; };
@@ -43,7 +48,7 @@
 		4529218B2271AA3700DDB6B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4529218D2271AA3700DDB6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4529218E2271AA3700DDB6B9 /* Debugger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Debugger.entitlements; sourceTree = "<group>"; };
-		452921952271AFF500DDB6B9 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		452921952271AFF500DDB6B9 /* DatabaseWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWC.swift; sourceTree = "<group>"; };
 		452A178E228A6FFB0080D947 /* Peertalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peertalk.h; sourceTree = "<group>"; };
 		452A178F228A6FFB0080D947 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
 		452A1790228A6FFB0080D947 /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTChannel.h; sourceTree = "<group>"; };
@@ -62,6 +67,15 @@
 		45C13CB12271BC3300013FC2 /* DummyDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataCreator.swift; sourceTree = "<group>"; };
 		45C13CB62271C6C300013FC2 /* DatabaseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCellView.swift; sourceTree = "<group>"; };
 		45C13CB82271C6D400013FC2 /* DatabaseCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatabaseCellView.xib; sourceTree = "<group>"; };
+		45CE2B0922B7AE210059005D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "../../swift-lib/Debugger_lib/Debugger_lib/Constants.swift"; sourceTree = "<group>"; };
+		45CE2B0B22B7B1400059005D /* AppListWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListWC.swift; sourceTree = "<group>"; };
+		45CE2B0D22B7B1570059005D /* BaseWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWC.swift; sourceTree = "<group>"; };
+		45CE2B1122B7B3AF0059005D /* AppListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListView.swift; sourceTree = "<group>"; };
+		45CE2B1422B7C8540059005D /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		45CE2B1622B7CA6C0059005D /* CallbackSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackSubscriber.swift; sourceTree = "<group>"; };
+		45CE2B1822B7CAFA0059005D /* CommunicationListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationListener.swift; sourceTree = "<group>"; };
+		45CE2B1A22B7CB700059005D /* DDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDevice.swift; sourceTree = "<group>"; };
+		45CE2B1C22B8B2AD0059005D /* AppCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCellView.swift; sourceTree = "<group>"; };
 		45EBA13522AE4DEE005C71F4 /* PTDataExtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTDataExtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +109,7 @@
 		452921832271AA3500DDB6B9 /* Debugger */ = {
 			isa = PBXGroup;
 			children = (
+				45CE2B1322B7C81C0059005D /* New Group */,
 				452A178C228A6FFB0080D947 /* peertalk */,
 				45C13CB02271BB9400013FC2 /* Util */,
 				45C13CA72271B81100013FC2 /* Model */,
@@ -113,15 +128,11 @@
 		452921942271AFC300DDB6B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				452921952271AFF500DDB6B9 /* MainVC.swift */,
-				45C13CB62271C6C300013FC2 /* DatabaseCellView.swift */,
-				45C13CB82271C6D400013FC2 /* DatabaseCellView.xib */,
-				450937CE2271E53A00C008C9 /* DatabaseOutlineView.swift */,
-				450937D02272B3AA00C008C9 /* DatabaseTableView.swift */,
-				45080CE522AF7D2A008E4A99 /* CommunicationManager.swift */,
-				45080CE722AF7D40008E4A99 /* CommunicationDelegate.swift */,
+				45CE2B1022B7B17A0059005D /* Database */,
+				45CE2B0F22B7B1600059005D /* AppList */,
 				45080CEA22AF8AF3008E4A99 /* ResponseParser.swift */,
 				45080CED22AFAC4F008E4A99 /* ClickDelegate.swift */,
+				45CE2B0D22B7B1570059005D /* BaseWC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -150,6 +161,7 @@
 				45C13CAA2271B86900013FC2 /* DApplication.swift */,
 				45C13CAC2271B89800013FC2 /* DDatabase.swift */,
 				45C13CAE2271B8A900013FC2 /* DTable.swift */,
+				45CE2B1A22B7CB700059005D /* DDevice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,9 +169,42 @@
 		45C13CB02271BB9400013FC2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				45CE2B0922B7AE210059005D /* Constants.swift */,
 				45C13CB12271BC3300013FC2 /* DummyDataCreator.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		45CE2B0F22B7B1600059005D /* AppList */ = {
+			isa = PBXGroup;
+			children = (
+				45C13CB62271C6C300013FC2 /* DatabaseCellView.swift */,
+				45C13CB82271C6D400013FC2 /* DatabaseCellView.xib */,
+				45CE2B0B22B7B1400059005D /* AppListWC.swift */,
+				45CE2B1122B7B3AF0059005D /* AppListView.swift */,
+				45CE2B1C22B8B2AD0059005D /* AppCellView.swift */,
+			);
+			path = AppList;
+			sourceTree = "<group>";
+		};
+		45CE2B1022B7B17A0059005D /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				450937CE2271E53A00C008C9 /* DatabaseOutlineView.swift */,
+				452921952271AFF500DDB6B9 /* DatabaseWC.swift */,
+				450937D02272B3AA00C008C9 /* DatabaseTableView.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		45CE2B1322B7C81C0059005D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				45CE2B1422B7C8540059005D /* CommunicationManager.swift */,
+				45CE2B1622B7CA6C0059005D /* CallbackSubscriber.swift */,
+				45CE2B1822B7CAFA0059005D /* CommunicationListener.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,23 +284,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				45C13CB22271BC3300013FC2 /* DummyDataCreator.swift in Sources */,
+				45CE2B0A22B7AE210059005D /* Constants.swift in Sources */,
 				45C13CB72271C6C300013FC2 /* DatabaseCellView.swift in Sources */,
 				450937CF2271E53A00C008C9 /* DatabaseOutlineView.swift in Sources */,
-				452921962271AFF500DDB6B9 /* MainVC.swift in Sources */,
+				45CE2B1D22B8B2AD0059005D /* AppCellView.swift in Sources */,
+				45CE2B1222B7B3AF0059005D /* AppListView.swift in Sources */,
+				452921962271AFF500DDB6B9 /* DatabaseWC.swift in Sources */,
 				45C13CAB2271B86900013FC2 /* DApplication.swift in Sources */,
 				452A1799228A6FFB0080D947 /* PTProtocol.m in Sources */,
 				45C13CA92271B83200013FC2 /* IBaseModel.swift in Sources */,
-				45080CE822AF7D40008E4A99 /* CommunicationDelegate.swift in Sources */,
 				45C13CAF2271B8A900013FC2 /* DTable.swift in Sources */,
 				452921852271AA3500DDB6B9 /* AppDelegate.swift in Sources */,
+				45CE2B1722B7CA6C0059005D /* CallbackSubscriber.swift in Sources */,
 				452A179A228A6FFB0080D947 /* PTUSBHub.m in Sources */,
 				45080CEE22AFAC4F008E4A99 /* ClickDelegate.swift in Sources */,
-				45080CE622AF7D2A008E4A99 /* CommunicationManager.swift in Sources */,
 				45080CEB22AF8AF3008E4A99 /* ResponseParser.swift in Sources */,
 				45EBA13622AE4DEE005C71F4 /* PTDataExtn.swift in Sources */,
+				45CE2B1922B7CAFA0059005D /* CommunicationListener.swift in Sources */,
+				45CE2B0E22B7B1570059005D /* BaseWC.swift in Sources */,
 				450937D12272B3AA00C008C9 /* DatabaseTableView.swift in Sources */,
+				45CE2B0C22B7B1400059005D /* AppListWC.swift in Sources */,
 				452A1798228A6FFB0080D947 /* PTChannel.m in Sources */,
 				45C13CAD2271B89800013FC2 /* DDatabase.swift in Sources */,
+				45CE2B1B22B7CB700059005D /* DDevice.swift in Sources */,
+				45CE2B1522B7C8540059005D /* CommunicationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

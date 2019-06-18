@@ -14,4 +14,7 @@ class DApplication: IBaseModel {
     public var applicationName: String = ""
     public var version:String = ""
     public var build:String = ""
+    public var iconData : Data?
+    public var iconString: String?
+
 }
