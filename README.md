@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ...
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ...
-        CommunicationManager().initializeSession()
+        DebuggerIos.initWithDefault()
         }
      ...
      }
@@ -55,9 +55,8 @@ In this case you have to add some Bridging-header files to interoperability of s
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    CommunicationManager *channel = [CommunicationManager new];
-    [channel initializeSession];
-    return YES;   
+    [DebuggerIos initWithDefault];
+    ....   
 }
 
 @end
