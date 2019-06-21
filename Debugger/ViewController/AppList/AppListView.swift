@@ -69,7 +69,7 @@ class AppListView : NSObject, NSOutlineViewDelegate,NSOutlineViewDataSource{
         vw?.object = application
 
         vw?.appNameView.stringValue = application.applicationName
-        vw?.appBundleId.stringValue = "\(application.applicationId) v\(application.version)(\(application.build))"
+        vw?.appBundleId.stringValue = "\(application.applicationId)-v\(application.version)(\(application.build))"
         if application.iconString != nil {
             let image  = NSImage(data: Data(base64Encoded: application.iconString!)!)
             vw?.iConView.image = image

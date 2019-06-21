@@ -14,8 +14,8 @@ public class CommunicationManager: NSObject,PTChannelDelegate {
     fileprivate var serverChannel : PTChannel?
     fileprivate var peerChannel : PTChannel?
 
-    @objc
-    func initializeSession(){
+@objc
+   public func initializeSession(){
 
         serverChannel?.delegate = self
         let channel = PTChannel(delegate: self)
@@ -45,7 +45,7 @@ public class CommunicationManager: NSObject,PTChannelDelegate {
         if type == PTExampleFrameTypeTextMessage {
 
             let textData = payload.textFrameMessage
-            print("Error occurred address \(textData)")
+            print("Data recieved: \(textData)")
 
             let data = processResponse(request: textData)
             if data != nil{

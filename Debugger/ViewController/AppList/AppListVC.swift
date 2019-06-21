@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AppListWC: BaseWC , ClickDelegate ,CommunicationListener{
+class AppListVC: BaseVC , ClickDelegate ,CommunicationListener{
 
     @IBOutlet weak var appOutlineView: NSOutlineView!
 
@@ -26,16 +26,33 @@ class AppListWC: BaseWC , ClickDelegate ,CommunicationListener{
 
         communincationManager = CommunicationManager.getInstance()
         communincationManager?.setListener(listener: self)
+
+        loadDummy()
+    }
+
+    func loadDummy(){
+        if Constants.TEST {
+            applications.append(DummyDataCreator.getDummyApplication())
+            appTableView?.setData(apps: applications )
+        }
     }
 
     func onClick(obj: Any, index: Int) {
         if let application = obj as? DApplication {
           let app =  openedApps.first {$0 === application}
-           let databaseWc = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("DatabaseWC")) as? DatabaseWC
+           let databaseWc = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("DatabaseVC")) as? DatabaseVC
             databaseWc?.selectedApp = application
             databaseWc?.selectedDevice = selectedDevice
+
             self.presentAsModalWindow(databaseWc!)
+//
+//            let storyboard = NSStoryboard(name: "Main", bundle: nil)
+//            let windowController = storyboard.instantiateController(withIdentifier: "DatabaseWC") as! NSWindowController
+//
+//            windowController.showWindow(self)
+
         }
+        
     }
 
     func onDeviceConnected(device: DDevice) {
@@ -54,8 +71,9 @@ class AppListWC: BaseWC , ClickDelegate ,CommunicationListener{
         let parser = ResponseParser()
         let code =   parser.parseCode(data: response)
         if code == Constants.KEY_APP_DETAILS {
-            applications.append(parser.parseAppDetails(data: response))
-            appTableView?.setData(apps: applications )
+            let result = parser.parseAppDetails(data: response)
+            applications.append(result.0)
+            appTableView?.setData(apps: applications)
         }
     }
 }

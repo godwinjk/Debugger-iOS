@@ -18,11 +18,21 @@ class ResponseParser: NSObject {
         return 0
     }
 
-    public func parseAppDetails(data : String) -> DApplication{
+    public func parseAppDetails(data : String) -> (DApplication, String?, String?){
         var application = DApplication()
 
         let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
+
+
         if let dictionary = json as? [String: Any] {
+
+            let errorCode = dictionary["errorCode"] as? String
+            let errorMessage = dictionary["errorMessage"] as? String
+
+            if errorCode != nil {
+                return (application,errorCode,errorMessage)
+            }
+
             let appName = dictionary["appName"] as? String
             let bundleId = dictionary["id"] as? String
             let icon = dictionary["icon"] as? String
@@ -36,13 +46,19 @@ class ResponseParser: NSObject {
             application.version = version ?? "0.0.0"
         }
 
-        return application
+        return(application,nil,nil)
     }
-    public func parseDatabases(data : String) -> [DDatabase]?{
+    public func parseDatabases(data : String) -> ([DDatabase]?, String?, String?){
+        let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
+
         var dbs = [DDatabase]()
 
-        let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
         if let dictionary = json as? [String: Any] {
+            if let arr = dictionary["Error"] as? [String: Any]  {
+                let errorCode = arr["errorCode"] as? String
+                let errorMessage = arr["errorMessage"] as? String
+                return (nil,errorCode,errorMessage)
+            }
             if let arr = dictionary["Data"] as? [String] {
                 // access individual value in dictionary
                 for path in arr {
@@ -56,14 +72,20 @@ class ResponseParser: NSObject {
             }
         }
 
-        return dbs
+        return (dbs,nil,nil)
     }
 
-    public func parseTable(data : String) -> [DTable]?{
+    public func parseTable(data : String) -> ([DTable]?, String?, String?){
+        let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
+
         var dbs = [DTable]()
 
-        let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
         if let dictionary = json as? [String: Any] {
+            if let arr = dictionary["Error"] as? [String: Any]  {
+                let errorCode = arr["errorCode"] as? String
+                let errorMessage = arr["errorMessage"] as? String
+                return (nil,errorCode,errorMessage)
+            }
             if let arr = dictionary["Data"] as? [String] {
                 // access individual value in dictionary
                 for name in arr {
@@ -75,13 +97,21 @@ class ResponseParser: NSObject {
             }
         }
 
-        return dbs
+        return (dbs,nil,nil)
     }
 
-    public func parseTableDetails(data : String,table : DTable) -> DTable?{
+    public func parseTableDetails(data : String,table : DTable) -> (DTable?, String?, String?){
 
         let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
+
         if let dictionary = json as? [String: Any] {
+
+            if let arr = dictionary["Error"] as? [String: Any]  {
+                let errorCode = arr["errorCode"] as? String
+                let errorMessage = arr["errorMessage"] as? String
+                return (nil,errorCode,errorMessage)
+            }
+
             if let dict = dictionary["Data"] as? [String : Any] {
 
                 let columnCount = dict["columnCount"] as? Int
@@ -95,10 +125,10 @@ class ResponseParser: NSObject {
                 table.columnNames = names!
                 table.rows = details!
 
-                return table
+                return (table,nil,nil)
             }
         }
 
-        return nil
+        return (nil,nil,nil)
     }
 }

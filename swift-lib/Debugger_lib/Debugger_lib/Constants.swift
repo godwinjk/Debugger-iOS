@@ -9,6 +9,9 @@
 import Foundation
 
 class Constants{
+    static let DEBUG = true
+    static let TEST = false
+
     static let KEY_APP_DETAILS = 1000
     static let KEY_DB_LIST = 1001
     static let KEY_TABLES = 1002

@@ -102,15 +102,19 @@ class DatabaseManager{
         let database = SQLiteDatabase()
         _ = database.open(filename: databaseName)
         let statement = SQLiteStatement(database: database)
-        if statement.prepare(sqlQuery: query) != .ok {
+        if let status = statement.prepare(sqlQuery: query) {
             /* handle error */
-            print("Error")
+            print(status)
+            if status != .ok {
+                return try createErrorBlockForQuery(status: status)
+            }
         }
 
         var root : [String: Any] = [:]
         root["rc"] = Constants.KEY_QUERY
         var coulumnNames : [String] = []
         let columnCount = statement.columnCount()
+
         for i in 0..<columnCount{
             coulumnNames.append(statement.columnName(at: i) ?? "")
         }
@@ -192,5 +196,80 @@ class DatabaseManager{
             }
         }
         return filteredFiles
+    }
+
+    private func createErrorBlockForQuery(status: SQLiteStatusCode) throws -> String?{
+        var root : [String: Any] = [:]
+        root["rc"] = Constants.KEY_QUERY
+
+        var data : [String: Any] = [:]
+        data["errorCode"] = "\(status)"
+
+        switch status {
+        case .ok :
+            data["errorMessage"] =  "Successful result "
+            /* beginning-of-error-codes */
+            case .error :
+                data["errorMessage"] = "SQL error or missing database "
+            case .internalLogicError :
+                data["errorMessage"] = "Internal logic error in SQLite "
+            case .accessPermissionDenied :
+                data["errorMessage"] = "Access permission denied "
+            case .abort :
+                data["errorMessage"] = "Callback routine requested an abort "
+            case .busy :
+                data["errorMessage"] = "The database file is locked "
+            case .locked :
+                data["errorMessage"] = "A table in the database is locked "
+            case .noMemory :
+                data["errorMessage"] = "A malloc() failed "
+            case .readOnly :
+                data["errorMessage"] = "Attempt to write a readonly database "
+            case .interrupt :
+                data["errorMessage"] = "Operation terminated by sqlite3_interrupt()"
+            case .ioError :
+                data["errorMessage"] = "Some kind of disk I/O error occurred "
+            case .corrupt :
+                data["errorMessage"] = "The database disk image is malformed "
+            case .notFound :
+                data["errorMessage"] = "Unknown opcode in sqlite3_file_control() "
+            case .full :
+                data["errorMessage"] = "Insertion failed because database is full "
+            case .cantOpen :
+                data["errorMessage"] = "Unable to open the database file "
+            case .`protocol` :
+                data["errorMessage"] = "Database lock protocol error "
+            case .empty :
+                data["errorMessage"] = "Database is empty "
+            case .schema :
+                data["errorMessage"] = "The database schema changed "
+            case .tooBig :
+                data["errorMessage"] = "String or BLOB exceeds size limit "
+            case .constraint :
+                data["errorMessage"] = "Abort due to constraint violation "
+            case .mismatch :
+                data["errorMessage"] = "Data type mismatch "
+            case .misuse :
+                data["errorMessage"] = "Library used incorrectly "
+            case .noLFS :
+                data["errorMessage"] = "Uses OS features not supported on host "
+            case .authDeniedUTH :
+                data["errorMessage"] = "Authorization denied "
+            case .format :
+                data["errorMessage"] = "Auxiliary database format error "
+            case .range :
+                data["errorMessage"] = "2nd parameter to sqlite3_bind out of range "
+            case .notADatabase :
+                data["errorMessage"] = "File opened that is not a database file "
+            case .row :
+                data["errorMessage"] = "sqlite3_step() has another row ready "
+            case .done :
+                data["errorMessage"] = "sqlite3_step() has finished executing "
+            }
+
+        root["Error"] = data
+
+        let finalObj =  try JSONSerialization.data(withJSONObject: root, options: [])
+        return String(data: finalObj, encoding: .utf8)
     }
 }

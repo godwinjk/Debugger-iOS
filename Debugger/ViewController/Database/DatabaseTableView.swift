@@ -29,7 +29,7 @@ class DatabaseTableView: NSObject, NSTableViewDelegate,NSTableViewDataSource {
         return table?.rowCount ?? 0
     }
 
-    func setData(table: DTable){
+    func setData(table: DTable?){
         self.table = table;
         self.addHeader()
         self.dbTableView.reloadData()
@@ -37,6 +37,10 @@ class DatabaseTableView: NSObject, NSTableViewDelegate,NSTableViewDataSource {
 
     private func addHeader(){
         self.dbTableView.tableColumns.forEach { self.dbTableView.removeTableColumn($0)}
+        guard table != nil else {
+            return
+        }
+
         for  column in table!.columnNames {
             let tableColumn = NSTableColumn()
             tableColumn.headerCell.title = column
@@ -48,7 +52,7 @@ class DatabaseTableView: NSObject, NSTableViewDelegate,NSTableViewDataSource {
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard table!.rowCount>0 else {
+        guard table != nil && table!.rowCount>0 else {
             return nil
         }
          var vw = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTextField
@@ -67,6 +71,9 @@ class DatabaseTableView: NSObject, NSTableViewDelegate,NSTableViewDataSource {
     }
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        guard table != nil else {
+            return ""
+        }
         for i in 0..<table!.coloumnCount{
             let columnName = table?.columnNames[i]
             let data = table?.rows[row][i]
@@ -76,7 +83,11 @@ class DatabaseTableView: NSObject, NSTableViewDelegate,NSTableViewDataSource {
         }
         return ""
     }
+
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+        guard table != nil else {
+            return
+        }
         for i in 0..<table!.coloumnCount{
             let columnName = table?.columnNames[i]
             let data = table?.rows[row][i]

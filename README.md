@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 In this case you have to add some Bridging-header files to interoperability of swift and obj-c
 
 1. Create *ProjectName-**Bridging-header.h*** file
-2. Find *Objective-C Bridging Header* key under *Build Settings menu* and add the value as *ProjectName/ProjectName-Bridging-header.h* 
-
+2. Find *Objective-C Bridging Header* key under *Build Settings menu/Swift Compiler* and add the value as *ProjectName/ProjectName-Bridging-header.h* 
+3. If you don't see that menu, just create a swift file, XCode automatically promt to create a bridging header and will add to the settings menu (easy).
 > Inside ProjectName-Bridging-header.h
 ```
 @import Debugger_lib;

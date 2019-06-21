@@ -1,5 +1,5 @@
 //
-//  BaseWC.swift
+//  DatabaseWC.swift
 //  Debugger
 //
 //  Created by Godwin Joseph on 20/06/19.
@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class BaseWC: NSWindowController {
+class DatabaseWC: NSWindowController {
 
 }

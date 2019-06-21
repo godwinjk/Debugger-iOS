@@ -143,7 +143,7 @@ class CommunicationManager: NSObject , PTChannelDelegate{
                 self.disconnectFromCurrentChannel()
                 self.connectedChannel_ = channel
 
-                self.sendData(requestCode: 1000, database: nil, table: nil)
+                self.sendData(requestCode: 1000, database: nil, table: nil, query: nil)
             }
         }
     }
@@ -190,7 +190,7 @@ class CommunicationManager: NSObject , PTChannelDelegate{
         }
     }
 
-    private func processRequest(requestCode : Int, database : DDatabase? , table : DTable?) -> String?{
+    private func processRequest(requestCode : Int, database : DDatabase? , table : DTable?, query: String?) -> String?{
 
         var root = [String : Any]()
         root["rc"] = requestCode
@@ -198,6 +198,9 @@ class CommunicationManager: NSObject , PTChannelDelegate{
             root["db"] = database?.fullPath
             if table != nil {
                 root["tbl"] = table?.name
+            }
+            if query != nil {
+                root["query"] = query!
             }
         }
         let data = try! JSONSerialization.data(withJSONObject: root, options: [])
@@ -215,8 +218,8 @@ class CommunicationManager: NSObject , PTChannelDelegate{
         }
     }
 
-    public func sendData(requestCode : Int, database : DDatabase? , table : DTable?){
-        let message = self.processRequest(requestCode: requestCode,database: database,table: table)
+    public func sendData(requestCode : Int, database : DDatabase? , table : DTable?, query: String?){
+        let message = self.processRequest(requestCode: requestCode,database: database,table: table, query: query)
         if message != nil {
             self.sendMessage(message: message!)
         }
