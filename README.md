@@ -7,6 +7,10 @@ This project is very unstable and not handled large data and security. That is o
 # Set-up
 
 ### In Mac
+Find the latest version of macApp from Releases folder ([Debugger v1.1](https://github.com/godwinjk/Debugger-iOS/blob/master/Release/Debugger%20v1.1.zip))
+
+**OR**
+
 1. Clone the project
 2. Double click the *Debugger.xcodeproj* and run it, you can see a mac application called Debugger window.
 3. Stay calm wait for the application to run
