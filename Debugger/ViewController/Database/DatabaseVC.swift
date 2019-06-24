@@ -120,10 +120,10 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
 
     func dialogError(error: String) -> Bool {
         let alert = NSAlert()
-        alert.messageText = "Alert"
+        alert.messageText = "Warning"
         alert.informativeText = error
         alert.alertStyle = .critical
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Ok")
 //        alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
@@ -133,7 +133,7 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
         alert.messageText = "Success"
         alert.informativeText = success
         alert.alertStyle = .informational
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Ok")
         //        alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
