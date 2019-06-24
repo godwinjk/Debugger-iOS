@@ -480,16 +480,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5861A17-D084-4BE7-9CF0-2FE22C7B627D"
+            uuid = "D3DC8193-67A2-4020-AF1A-3DB72C562B6F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Debugger/ViewController/ResponseParser.swift"
+            filePath = "Debugger/ViewController/Database/DatabaseVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "parseTableDetails(data:table:)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "setSecondaryView(option:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

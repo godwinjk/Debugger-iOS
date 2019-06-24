@@ -75,7 +75,7 @@ class ResponseParser: NSObject {
         return (dbs,nil,nil)
     }
 
-    public func parseTable(data : String) -> ([DTable]?, String?, String?){
+    public func parseTable(database : DDatabase, data : String) -> ([DTable]?, String?, String?){
         let json = try? JSONSerialization.jsonObject(with: data.data(using: .utf8)!, options: [])
 
         var dbs = [DTable]()
@@ -96,7 +96,7 @@ class ResponseParser: NSObject {
                 }
             }
         }
-
+        database.tables = dbs
         return (dbs,nil,nil)
     }
 

@@ -33,6 +33,8 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
 
     var communincationManager : CommunicationManager?
 
+    var queryCommands = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,7 +99,7 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
             let result = parser.parseDatabases(data: response)
             outlineView.setData(data: result.0 ?? [])
         }else if code == Constants.KEY_TABLES{
-            let result = parser.parseTable(data: response)
+            let result = parser.parseTable(database: selectedDatabase!,data: response)
             outlineView.setData(db: selectedDatabase!, tables: result.0 ?? [])
         }else if code == Constants.KEY_TABLE_DETAILS{
             let result = parser.parseTableDetails(data: response, table: selectedTable!)
@@ -108,6 +110,9 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
                 print(String(describing:"\(result.1!): \(String(describing: result.2!))"))
                 dialogError(error: "\(result.1!): \(String(describing: result.2!))")
                 return
+            }else if result.0?.coloumnCount ?? 0 <= 0 {
+                dialogSuccess(success: "Executed successfully")
+                queryEditor.string = START_ARROW_STRING
             }
             queryResult.setData(table: result.0 ?? DTable())
         }
@@ -120,6 +125,16 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
         alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
 //        alert.addButton(withTitle: "Cancel")
+        return alert.runModal() == .alertFirstButtonReturn
+    }
+
+    func dialogSuccess(success: String) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = "Success"
+        alert.informativeText = success
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        //        alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
 
@@ -137,6 +152,8 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
 
     private func setSecondaryView(option : Int){
         if option == 1{
+            queryCommands = QuerySuggestionHelper.getBasicQueryCommands()
+
             scrollViewForText.isHidden = false
             scrollViewForQueryResult.isHidden = false
 
@@ -166,14 +183,45 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
             communincationManager?.sendData(requestCode: Constants.KEY_QUERY, database: selectedDatabase, table: selectedTable, query: text)
             return true
         }else if sel_isEqual(commandSelector, #selector(deleteBackward)) || sel_isEqual(commandSelector, #selector(deleteForward)){
-            if START_ARROW_STRING == text {
+            if START_ARROW_STRING == text ||  text == "" || text == ">"{
                 textView.string = START_ARROW_STRING
                 return true
             }
+        }else if sel_isEqual(commandSelector, #selector(insertTab)) {
+            textView.complete(textView)
         }
         return false
     }
 
+    func textView(_ textView: NSTextView, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: UnsafeMutablePointer<Int>?) -> [String] {
+        var arr = [String]()
+
+         var string = textView.string
+
+        let indexStartOfText = string.index(string.startIndex, offsetBy: charRange.location)
+        let indexEndOfText = string.index(string.startIndex, offsetBy: charRange.location + charRange.length)
+
+        string = String(string[indexStartOfText..<indexEndOfText])
+        for value in queryCommands {
+            if  value.contains(string.uppercased()) {
+                arr.append(value)
+            }
+        }
+
+        for table in selectedDatabase!.tables{
+            if  table.name.contains(string.uppercased()) {
+                arr.append(table.name)
+            }
+            for column in  table.columnNames{
+                if  column.contains(string.uppercased()) {
+                    arr.append(column)
+                }
+            }
+        }
+        return arr
+    }
+
+    
 //    private func arrangeSplitView(){
 //        let subViews = splitView.subviews
 //        let dividerThickness = splitView.dividerThickness

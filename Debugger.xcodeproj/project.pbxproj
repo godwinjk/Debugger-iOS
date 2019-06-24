@@ -18,6 +18,7 @@
 		452A1798228A6FFB0080D947 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 452A1791228A6FFB0080D947 /* PTChannel.m */; };
 		452A1799228A6FFB0080D947 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 452A1794228A6FFB0080D947 /* PTProtocol.m */; };
 		452A179A228A6FFB0080D947 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 452A1796228A6FFB0080D947 /* PTUSBHub.m */; };
+		454725F222C0809900CCBC35 /* QuerySuggestionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454725F122C0809900CCBC35 /* QuerySuggestionHelper.swift */; };
 		45B0BDB122BBA882008D4620 /* BaseWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0BDB022BBA882008D4620 /* BaseWC.swift */; };
 		45B0BDB722BBAF1E008D4620 /* AppListWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0BDB522BBAF1D008D4620 /* AppListWC.swift */; };
 		45B0BDB822BBAF1E008D4620 /* DatabaseWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B0BDB622BBAF1D008D4620 /* DatabaseWC.swift */; };
@@ -62,6 +63,7 @@
 		452A1796228A6FFB0080D947 /* PTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUSBHub.m; sourceTree = "<group>"; };
 		452A179B228A72B00080D947 /* Debugger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Debugger-Bridging-Header.h"; sourceTree = "<group>"; };
 		452A17A3228A7DB40080D947 /* PTExampleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTExampleProtocol.h; sourceTree = "<group>"; };
+		454725F122C0809900CCBC35 /* QuerySuggestionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuerySuggestionHelper.swift; sourceTree = "<group>"; };
 		45B0BDB022BBA882008D4620 /* BaseWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWC.swift; sourceTree = "<group>"; };
 		45B0BDB522BBAF1D008D4620 /* AppListWC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppListWC.swift; sourceTree = "<group>"; };
 		45B0BDB622BBAF1D008D4620 /* DatabaseWC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseWC.swift; sourceTree = "<group>"; };
@@ -113,7 +115,8 @@
 		452921832271AA3500DDB6B9 /* Debugger */ = {
 			isa = PBXGroup;
 			children = (
-				45CE2B1322B7C81C0059005D /* New Group */,
+				454725F022C0806300CCBC35 /* AutoComplete */,
+				45CE2B1322B7C81C0059005D /* Communication */,
 				452A178C228A6FFB0080D947 /* peertalk */,
 				45C13CB02271BB9400013FC2 /* Util */,
 				45C13CA72271B81100013FC2 /* Model */,
@@ -158,6 +161,14 @@
 				452A17A3228A7DB40080D947 /* PTExampleProtocol.h */,
 			);
 			path = peertalk;
+			sourceTree = "<group>";
+		};
+		454725F022C0806300CCBC35 /* AutoComplete */ = {
+			isa = PBXGroup;
+			children = (
+				454725F122C0809900CCBC35 /* QuerySuggestionHelper.swift */,
+			);
+			path = AutoComplete;
 			sourceTree = "<group>";
 		};
 		45B0BDB422BBAF1D008D4620 /* WindowController */ = {
@@ -211,14 +222,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		45CE2B1322B7C81C0059005D /* New Group */ = {
+		45CE2B1322B7C81C0059005D /* Communication */ = {
 			isa = PBXGroup;
 			children = (
 				45CE2B1422B7C8540059005D /* CommunicationManager.swift */,
 				45CE2B1622B7CA6C0059005D /* CallbackSubscriber.swift */,
 				45CE2B1822B7CAFA0059005D /* CommunicationListener.swift */,
 			);
-			path = "New Group";
+			path = Communication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 				45CE2B0C22B7B1400059005D /* AppListVC.swift in Sources */,
 				45B0BDB722BBAF1E008D4620 /* AppListWC.swift in Sources */,
 				452A1798228A6FFB0080D947 /* PTChannel.m in Sources */,
+				454725F222C0809900CCBC35 /* QuerySuggestionHelper.swift in Sources */,
 				45C13CAD2271B89800013FC2 /* DDatabase.swift in Sources */,
 				45CE2B1B22B7CB700059005D /* DDevice.swift in Sources */,
 				45B0BDB822BBAF1E008D4620 /* DatabaseWC.swift in Sources */,
@@ -473,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.godwin.Debugger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -495,7 +507,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.godwin.Debugger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
