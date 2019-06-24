@@ -7,7 +7,7 @@ This project is very unstable and not handled large data and security. That is o
 # Set-up
 
 ### In Mac
-Find the latest version of macApp from Releases folder ([Debugger v1.1](https://github.com/godwinjk/Debugger-iOS/blob/master/Release/Debugger%20v1.1.zip))
+Find the latest version of macApp from Releases folder ([Debugger v1.1](https://github.com/godwinjk/Debugger-iOS/blob/master/Release/Debugger%20v1.2.zip))
 
 **OR**
 
@@ -68,9 +68,33 @@ In this case you have to add some Bridging-header files to interoperability of s
 
 ## Sample Images
 
+**Application Listing**
+
+![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-24%20at%2012.51.26%20PM.png)
+
+**Database Listing**
+
 ![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-13%20at%204.12.19%20PM.png)
 
+**Table listing and details**
+
 ![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-13%20at%204.13.00%20PM.png)
+
+**Suggestion**
+
+![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-24%20at%2012.43.09%20PM.png)
+
+**Query results (Histories are on the way)**
+
+![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-24%20at%2012.44.15%20PM.png)
+
+**Data modification (modified results are on the way)**
+
+![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-24%20at%2012.45.21%20PM.png)
+
+**Error handling**
+
+![Alt text](https://github.com/godwinjk/Debugger-iOS/blob/master/Images/Screenshot%202019-06-24%20at%2012.46.48%20PM.png)
 
 ## Thank you
 
