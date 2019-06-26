@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ...
         DebuggerIos.initWithDefault() // If database is in documents folder
         
-        OR
+        // OR
+        
         let dbPath = getDatabasePath() // If database is other than documents folder
         DebuggerIos.initWithPath(dbPaths: dbPaths)
         
@@ -65,6 +66,11 @@ In this case you have to add some Bridging-header files to interoperability of s
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [DebuggerIos initWithDefault];
+    
+    // OR 
+    
+     NSArray *dbPaths = [self getDatabasePath];
+    [DebuggerIos initWithPathWithDbPaths:dbPaths];
     ....   
 }
 
