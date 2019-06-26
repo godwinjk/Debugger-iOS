@@ -30,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ...
      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ...
-        DebuggerIos.initWithDefault()
+        DebuggerIos.initWithDefault() // If database is in documents folder
+        
+        OR
+        let dbPath = getDatabasePath() // If database is other than documents folder
+        DebuggerIos.initWithPath(dbPaths: dbPaths)
+        
         }
      ...
      }
