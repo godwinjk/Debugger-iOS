@@ -7,7 +7,7 @@ This project is very unstable and not handled large data and security. That is o
 # Set-up
 
 ### In Mac
-Find the latest version of macApp from Releases folder ([Debugger v1.1](https://github.com/godwinjk/Debugger-iOS/blob/master/Release/Debugger%20v1.2.zip))
+Find the latest version of macApp from Releases folder ([Debugger_v1.3](https://github.com/godwinjk/Debugger-iOS/blob/master/Release/Debugger_v1.3.zip))
 
 **OR**
 
@@ -120,3 +120,4 @@ Do whatever you want. For an extra assurance I have added MIT Licence.
 
 ## Contact
 Contact me via godwinjoseph.k@gmail.com or www.linkedin.com/in/godwin-joseph, if you have any questions or improvements.
+Or be a contributor :D
