@@ -425,7 +425,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "numberOfRows(in:)"
+            landmarkName = "outlineView(_:shouldSelectItem:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -464,33 +464,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "694219B2-DA08-44B1-8E2F-E69B97362246"
+            uuid = "7D3635F0-578E-48D2-9366-A030EF7C1AA9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Debugger/ViewController/Database/DatabaseVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "processResponse(response:)"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "onDeviceDisconnected(device:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D3DC8193-67A2-4020-AF1A-3DB72C562B6F"
+            uuid = "C0ED95F7-DB30-486C-A8A8-299EDFAACC76"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Debugger/ViewController/Database/DatabaseVC.swift"
+            filePath = "Debugger/Communication/CallbackSubscriber.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "setSecondaryView(option:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "unSubscribe(callback:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C0ED95F7-DB30-486C-A8A8-299EDFAACC76 - 9da7c925e199a9f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Debugger.CallbackSubscriber.unSubscribe(callback: Debugger.CommunicationListener) -&gt; ()"
+                  moduleName = "Debugger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/HDD/iOs/plugin/Debugger/Debugger/Communication/CallbackSubscriber.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  uuid = "C0ED95F7-DB30-486C-A8A8-299EDFAACC76 - 83320e6602eec1e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Debugger.CommunicationListener) -&gt; Swift.Bool in Debugger.CallbackSubscriber.unSubscribe(callback: Debugger.CommunicationListener) -&gt; ()"
+                  moduleName = "Debugger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/HDD/iOs/plugin/Debugger/Debugger/Communication/CallbackSubscriber.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

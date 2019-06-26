@@ -9,6 +9,7 @@
 import Cocoa
 
 class DApplication: IBaseModel {
+    public var device : DDevice?
     
     public var applicationId: String = ""
     public var applicationName: String = ""

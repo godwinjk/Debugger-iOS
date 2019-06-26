@@ -38,6 +38,13 @@ class AppListView : NSObject, NSOutlineViewDelegate,NSOutlineViewDataSource{
         self.dbAppView.reloadData()
     }
 
+//    func removeItem(device : DDevice){
+//        for application in apps!.en {
+//            if application.device?.connectingToDeviceID == device.connectingToDeviceID {
+//
+//            }
+//        }
+//    }
     // MARK: outlineview delegates
 
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
@@ -84,7 +91,7 @@ class AppListView : NSObject, NSOutlineViewDelegate,NSOutlineViewDataSource{
     }
 
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        return 80
+        return 70
     }
 
     func numberOfRows(in tableView: NSTableView) -> Int {

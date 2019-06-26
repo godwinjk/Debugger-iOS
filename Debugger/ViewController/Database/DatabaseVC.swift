@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegate{
+class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegate, NSSplitViewDelegate{
 
     @IBOutlet weak var splitView: NSSplitView!
     @IBOutlet weak var dbList: NSOutlineView!
@@ -43,7 +43,7 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
         queryResult = DatabaseTableView(tableView: queryResultTableView)
 
         communincationManager = CommunicationManager.getInstance()
-        communincationManager?.setListener(listener: self)
+        CallbackSubscriber.getInstance().subscribe(callback: self)
 
         communincationManager?.sendData(requestCode: Constants.KEY_DB_LIST, database: nil, table: nil, query: nil)
 
@@ -51,6 +51,10 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
         setTextView()
 
         loadDummy()
+    }
+
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
     }
 
     func loadDummy(){
@@ -86,7 +90,11 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
 
     func onDeviceDisconnected(device: DDevice) {
         self.selectedDevice = nil
+        if  dialogError(error: "Device disconnected"){
+            self.view.window?.close()
+        }
     }
+
 
     func onGetMessage(data: String) {
         self.processResponse(response: data)
@@ -170,6 +178,7 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
 
             scrollViewForTable.isHidden = false
         }
+        splitView.adjustSubviews()
     }
 
     func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
@@ -221,6 +230,13 @@ class DatabaseVC: BaseVC, CommunicationListener, ClickDelegate,NSTextViewDelegat
         return arr
     }
 
+    deinit{
+        CallbackSubscriber.getInstance().subscribe(callback: self)
+    }
+//    func splitView(_ splitView: NSSplitView, constrainSplitPosition proposedPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+//        var subView  = splitView.subviews
+//        
+//    }
     
 //    private func arrangeSplitView(){
 //        let subViews = splitView.subviews

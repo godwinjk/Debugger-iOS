@@ -18,12 +18,15 @@ class DatabaseManager{
 
     public func listDatabases() throws -> String? {
 
-        let databases = getDatabases()
+        var databases = DebuggerIos.getInstance().getDbPaths()
+        if databases.count <= 0 {
+            databases = searchDatabaseFiles(directory: nil, files: &databases)
+        }
         var dictionary : [String: Any] = [:]
         dictionary["rc"] = Constants.KEY_DB_LIST
         var dbs: [String] = []
-        for db in databases! {
-            dbs.append(db.path)
+        for db in databases {
+            dbs.append(db)
         }
 
         dictionary["Data"] = dbs
@@ -153,6 +156,31 @@ class DatabaseManager{
         return databases
     }
 
+    private func searchDatabaseFiles(directory: URL?,files: inout [String]) -> [String]{
+        let fileManager = FileManager.default
+        var documentsURL : URL
+        if directory == nil {
+            documentsURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        }else {
+            documentsURL  = directory!;
+        }
+        var fileURLs:[URL]?
+        do {
+            fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+        } catch {
+            print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
+        }
+        if fileURLs != nil {
+            for url in fileURLs! {
+                if url.hasDirectoryPath {
+                    searchDatabaseFiles(directory: url, files: &files)
+                }else if isDatabaseFile(url:  url){
+                    files.append(url.path)
+                }
+            }
+        }
+        return files
+    }
     private func getAllFiles(directory: URL?)-> [URL]? {
         let fileManager = FileManager.default
         var documentsURL : URL
@@ -196,6 +224,17 @@ class DatabaseManager{
             }
         }
         return filteredFiles
+    }
+
+    private func isDatabaseFile(url: URL) ->  Bool{
+        let extensions = ["db", "sqlite", "sqlite3"]
+
+        for pathExtension in extensions {
+            if pathExtension == url.pathExtension {
+                return true
+            }
+        }
+        return false
     }
 
     private func createErrorBlockForQuery(status: SQLiteStatusCode) throws -> String?{

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol CommunicationListener {
+protocol CommunicationListener : class {
     func onDeviceConnected(device : DDevice)
     func onDeviceDisconnected(device : DDevice)
 

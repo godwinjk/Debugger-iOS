@@ -11,6 +11,7 @@ import Cocoa
 class AppListVC: BaseVC , ClickDelegate ,CommunicationListener{
 
     @IBOutlet weak var appOutlineView: NSOutlineView!
+    @IBOutlet weak var infoLabel: NSTextField!
 
     var communincationManager : CommunicationManager?
 
@@ -25,15 +26,39 @@ class AppListVC: BaseVC , ClickDelegate ,CommunicationListener{
         appTableView = AppListView(tableView: appOutlineView ,delegate: self)
 
         communincationManager = CommunicationManager.getInstance()
-        communincationManager?.setListener(listener: self)
+//        communincationManager?.setListener(listener: self)
+        CallbackSubscriber.getInstance().subscribe(callback: self)
 
         loadDummy()
+
+        loadTextView()
+
+    }
+
+    private func loadTextView(){
+//        let attrString = NSMutableAttributedString(string: "Please connect a device to vet the database.")
+//
+//        attrString.addAttribute(NSAttributedString.Key.link, value: "https://github.com/godwinjk/Debugger-iOS/blob/master/README.md", range: NSRange(location: 58, length: 4))
+//        infoLabel.attributedStringValue = attrString
+//
+//        let   linkAttr = [NSAttributedString.Key.foregroundColor: NSColor.green,
+//                          NSAttributedString.Key.underlineColor: NSColor.lightGray,
+//                          NSAttributedString.Key.underlineStyle: NSUnderlineStyle.patternDash] as [NSAttributedString.Key : Any]
+
+        infoLabel.stringValue = "Please connect a device to vet the database."
+    }
+    deinit {
+        CallbackSubscriber.getInstance().unSubscribe(callback: self)
+    }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
     }
 
     func loadDummy(){
         if Constants.TEST {
-            applications.append(DummyDataCreator.getDummyApplication())
-            appTableView?.setData(apps: applications )
+            self.applications.append(DummyDataCreator.getDummyApplication())
+            self.setData()
         }
     }
 
@@ -52,7 +77,6 @@ class AppListVC: BaseVC , ClickDelegate ,CommunicationListener{
 //            windowController.showWindow(self)
 
         }
-        
     }
 
     func onDeviceConnected(device: DDevice) {
@@ -61,6 +85,8 @@ class AppListVC: BaseVC , ClickDelegate ,CommunicationListener{
 
     func onDeviceDisconnected(device: DDevice) {
         self.selectedDevice = nil
+        self.applications = []
+        self.setData()
     }
 
     func onGetMessage(data: String) {
@@ -72,8 +98,14 @@ class AppListVC: BaseVC , ClickDelegate ,CommunicationListener{
         let code =   parser.parseCode(data: response)
         if code == Constants.KEY_APP_DETAILS {
             let result = parser.parseAppDetails(data: response)
-            applications.append(result.0)
-            appTableView?.setData(apps: applications)
+            self.applications.append(result.0)
+            self.setData()
         }
+    }
+
+    private func setData(){
+        infoLabel.isHidden = applications.count > 0
+
+        self.appTableView?.setData(apps: applications)
     }
 }

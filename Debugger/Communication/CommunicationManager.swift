@@ -53,6 +53,7 @@ class CommunicationManager: NSObject , PTChannelDelegate{
                 if !(self.connectingToDeviceID != nil) || !(deviceID == self.connectingToDeviceID) {
                     self.disconnectFromCurrentChannel()
                     self.connectingToDeviceID = deviceID
+                    self.connectedDeviceID_ = deviceID
                     //                    self.connectedDeviceProperties_ = note.userInfo?["Properties"] as! [AnyHashable : Any]
                     self.enqueueConnectToUSBDevice()
                 }
@@ -111,6 +112,8 @@ class CommunicationManager: NSObject , PTChannelDelegate{
                 let device = DDevice()
                 device.connectedChannel = channel
                 self.communicationListener?.onDeviceConnected(device: device)
+
+                CallbackSubscriber.getInstance().publishDeviceConnected(device: device)
             }
             self.perform(#selector(self.enqueueconnectToLocalIPv4Port), with: nil, afterDelay: 1.0)
         })
@@ -131,17 +134,20 @@ class CommunicationManager: NSObject , PTChannelDelegate{
                 print("Error")
                 print("Failed to connect to device \(channel?.userInfo ?? "nil foudn on userinfo")");
 
-                let device = DDevice()
-                device.connectedChannel = channel
-                device.connectingToDeviceID = self.connectingToDeviceID
-                self.communicationListener?.onDeviceConnected(device: device)
-
                 if (channel?.userInfo as? NSNumber == self.connectingToDeviceID) {
                     self.perform(#selector(self.enqueueConnectToUSBDevice), with: nil, afterDelay: 1.0)
                 }
             }else {
                 self.disconnectFromCurrentChannel()
                 self.connectedChannel_ = channel
+
+                let device = DDevice()
+                device.connectedChannel = channel
+                device.connectingToDeviceID = self.connectingToDeviceID
+
+                self.communicationListener?.onDeviceConnected(device: device)
+
+                CallbackSubscriber.getInstance().publishDeviceConnected(device: device)
 
                 self.sendData(requestCode: 1000, database: nil, table: nil, query: nil)
             }
@@ -170,8 +176,11 @@ class CommunicationManager: NSObject , PTChannelDelegate{
         }
         if type == PTExampleFrameTypeTextMessage {
             let textData = payload.textFrameMessage
-            print("kitya data \(textData)")
+            print("Data recieved \(textData)")
             communicationListener?.onGetMessage(data: textData)
+
+            CallbackSubscriber.getInstance().publishGetMessage(device: nil, message: textData)
+
         } else if type == PTExampleFrameTypePing && (connectedChannel_ != nil) {
             connectedChannel_?.sendFrame(ofType: PTExampleFrameTypePong, tag: tag, withPayload: nil, callback: nil)
         }
@@ -183,9 +192,13 @@ class CommunicationManager: NSObject , PTChannelDelegate{
                 let device = DDevice()
                 device.connectedChannel = channel
                 communicationListener?.onDeviceDisconnected(device: device)
+
+                CallbackSubscriber.getInstance().publishDeviceDisconnected(device:  device)
+
                 //disconnected
                 didDisconnectFromDevice(deviceId: connectedDeviceID_!)
                 connectedChannel_ = nil
+                connectedDeviceID_ = nil
             }
         }
     }
