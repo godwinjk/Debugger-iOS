@@ -16,6 +16,11 @@ Find the latest version of macApp from Releases folder ([Debugger_v1.3](https://
 3. Stay calm wait for the application to run
 
 ### In application
+
+Find the latest version of iOS Framework from Releases folder ([Debugger_v1.3](https://github.com/godwinjk/Debugger-iOS/blob/master/Release/Debugger_v1.3.zip))
+
+**OR**
+
 1. Add the *Debugger_lib.xcodeproj* inside *Swift-lib* into working project or build and take framework and link to your project.
 
 #### For swift project
